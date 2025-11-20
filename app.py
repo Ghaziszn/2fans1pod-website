@@ -69,4 +69,46 @@ def create_app():
             cache_key = f"all_stats_{year}"
             cached = cache.get(cache_key)
             if cached:
-              
+                return jsonify(cached), 200
+            
+            data, code = cfbd_get("/stats/season", {"year": year})
+            if code == 200:
+                cache.set(cache_key, data, timeout=3600)
+            return (jsonify(data), code)
+
+        data, code = cfbd_get("/stats/season", {"year": year, "team": team})
+        return (jsonify(data), code)
+
+    @app.get("/api/redzone")
+    @limiter.limit("60/minute")
+    def api_redzone():
+        """
+        Serve cached redzone stats from scraped data.
+        Cache is updated manually by running: python -m scrapers.redzone_scraper
+        """
+        import json
+        from pathlib import Path
+        
+        cache_file = Path("data/redzone_stats.json")
+        
+        if not cache_file.exists():
+            return jsonify({"error": "RedZone data not available. Run scraper first."}), 404
+        
+        with open(cache_file, 'r') as f:
+            data = json.load(f)
+        
+        return jsonify(data), 200
+
+    @app.get("/data/<path:filename>")
+    def serve_data(filename):
+        return send_from_directory("data", filename)
+
+    return app
+
+app = create_app()
+
+if __name__ == "__main__":
+    # Get port from environment variable (Render sets this)
+    port = int(os.getenv("PORT", 5001))
+    # Bind to 0.0.0.0 for Render (allows external connections)
+    app.run(host="0.0.0.0", port=port, debug=False)
