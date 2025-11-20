@@ -1,0 +1,260 @@
+:root {
+  --bg: #0f172a;
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --border: rgba(148, 163, 184, 0.1);
+
+  /* Ranking Colors */
+  --rank-elite: #22c55e;
+  /* Green */
+  --rank-good: #86efac;
+  /* Light Green */
+  --rank-avg: #fde047;
+  /* Yellow */
+  --rank-poor: #fb923c;
+  /* Orange */
+  --rank-bad: #ef4444;
+  /* Red */
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  line-height: 1.5;
+}
+
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.matchup-headers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.matchup-headers h3 {
+  margin-top: 0;
+}
+
+.matchup-headers h3:first-child {
+  text-align: left;
+}
+
+.matchup-headers h3:last-child {
+  text-align: right;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Controls */
+.grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+input,
+select {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+}
+
+.btn-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+button {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+button.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+button.primary:hover {
+  background: var(--primary-hover);
+}
+
+/* Comparison Grid */
+.comp-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.comp-header,
+.comp-row {
+  display: grid;
+  grid-template-columns: 70px 110px 1.5fr 110px 70px;
+  /* Rank | Val | Metric | Val | Rank */
+  gap: 1rem;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.comp-header {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.5rem;
+}
+
+.comp-header .col-rank {
+  color: var(--text);
+  /* Full white text for visibility */
+  background: none;
+  /* No background in header */
+}
+
+.comp-row {
+  border-radius: 0.25rem;
+}
+
+.comp-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.col-rank {
+  font-weight: 700;
+  text-align: center;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  color: #1e293b;
+  /* Dark text for colored badges */
+  font-size: 0.9rem;
+}
+
+.col-val {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.95rem;
+}
+
+/* Left value column (offense) - align right */
+.comp-row>.col-val:nth-child(2),
+.comp-header>.col-val:nth-child(2) {
+  text-align: right;
+}
+
+/* Right value column (defense) - align left for symmetry */
+.comp-row>.col-val:nth-child(4),
+.comp-header>.col-val:nth-child(4) {
+  text-align: left;
+}
+
+.col-metric {
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Rank Colors */
+.rank-elite {
+  background-color: var(--rank-elite);
+}
+
+.rank-good {
+  background-color: var(--rank-good);
+}
+
+.rank-avg {
+  background-color: var(--rank-avg);
+}
+
+.rank-poor {
+  background-color: var(--rank-poor);
+}
+
+.rank-bad {
+  background-color: var(--rank-bad);
+}
+
+/* Utilities */
+details {
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+pre {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}

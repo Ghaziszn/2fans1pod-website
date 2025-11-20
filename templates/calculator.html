@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CFB Matchup Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=5">
+  <style>
+    /* Navigation bar */
+    .navbar {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+    }
+
+    .navbar-logo {
+      height: 50px;
+      width: auto;
+      border-radius: 0.5rem;
+    }
+
+    .navbar-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .navbar-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .navbar-link:hover {
+      color: var(--text);
+    }
+
+    .navbar-link.active {
+      color: #f97316;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <img src="{{ url_for('static', filename='images/2fans1pod_logo.jpg') }}" alt="2fans1pod" class="navbar-logo">
+      <span class="navbar-title">2fans1pod</span>
+    </a>
+    <div class="navbar-links">
+      <a href="/" class="navbar-link">Home</a>
+      <a href="/calculator" class="navbar-link active">Calculator</a>
+    </div>
+  </nav>
+
+  <div id="app">
+    <h1>CFB Matchup Calculator</h1>
+    <p class="muted">Advanced Stats & Rankings</p>
+
+    <div class="grid-two">
+      <label>
+        <span>Season (Year)</span>
+        <input id="seasonYear" type="number" min="2005" max="2100" value="2025">
+      </label>
+      <div></div>
+    </div>
+
+    <div class="grid-two">
+      <label>
+        <span>Team 1</span>
+        <select id="team1"></select>
+      </label>
+      <label>
+        <span>Team 2</span>
+        <select id="team2"></select>
+      </label>
+    </div>
+
+    <div class="btn-row">
+      <button id="runCompare" class="primary">Run Matchup</button>
+      <span id="status" class="muted">Loading teams...</span>
+    </div>
+
+    <details>
+      <summary>Show SOS preview</summary>
+      <pre id="sosPreview"></pre>
+    </details>
+
+    <div class="matchup-headers">
+      <h3 id="grid1HeaderLeft">Team 1 Offense</h3>
+      <h3 id="grid1HeaderRight">Team 2 Defense</h3>
+    </div>
+    <div id="grid1" class="comp-grid">
+      <div class="muted" style="text-align:center; padding: 2rem;">Select teams and run matchup to see stats.</div>
+    </div>
+
+    <div class="matchup-headers">
+      <h3 id="grid2HeaderLeft">Team 2 Offense</h3>
+      <h3 id="grid2HeaderRight">Team 1 Defense</h3>
+    </div>
+    <div id="grid2" class="comp-grid">
+      <div class="muted" style="text-align:center; padding: 2rem;">Select teams and run matchup to see stats.</div>
+    </div>
+
+  </div>
+
+  <script>window.SOS_URL = "{{ url_for('serve_data', filename='sos.json') }}";</script>
+  <script src="{{ url_for('static', filename='js/app.js') }}?v=9"></script>
+</body>
+
+</html>

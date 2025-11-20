@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>2fans1pod - College Football Podcast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=5">
+    <style>
+        /* Homepage specific styles */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .logo-container {
+            max-width: 500px;
+            width: 100%;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(249, 115, 22, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(249, 115, 22, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            max-width: 900px;
+        }
+
+        .feature {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            margin: 0 0 0.5rem 0;
+            border: none;
+            padding: 0;
+            font-size: 1.2rem;
+        }
+
+        .feature p {
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* YouTube Section */
+        .youtube-section {
+            background: linear-gradient(180deg, var(--bg) 0%, #0a0f1a 100%);
+            padding: 4rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .youtube-channel-card {
+            background: var(--card-bg);
+            border: 2px solid #f97316;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .youtube-channel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(249, 115, 22, 0.3);
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .channel-icon {
+            font-size: 4rem;
+        }
+
+        .channel-details h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.8rem;
+            color: var(--text);
+            border: none;
+            padding: 0;
+        }
+
+        .channel-details p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .subscribe-button {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        .subscribe-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(249, 115, 22, 0.5);
+        }
+
+        .youtube-note {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Social Media Section */
+        .social-section {
+            background: var(--bg);
+            padding: 4rem 2rem;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: #f97316;
+            box-shadow: 0 15px 40px rgba(249, 115, 22, 0.3);
+        }
+
+        .social-card.youtube:hover {
+            border-color: #ff0000;
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
+        }
+
+        .social-card.twitter:hover {
+            border-color: #1da1f2;
+            box-shadow: 0 15px 40px rgba(29, 161, 242, 0.3);
+        }
+
+        .social-card.instagram:hover {
+            border-color: #e1306c;
+            box-shadow: 0 15px 40px rgba(225, 48, 108, 0.3);
+        }
+
+        .social-card.tiktok:hover {
+            border-color: #00f2ea;
+            box-shadow: 0 15px 40px rgba(0, 242, 234, 0.3);
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .social-info h3 {
+            margin: 0 0 0.25rem 0;
+            font-size: 1.3rem;
+            color: var(--text);
+            border: none;
+            padding: 0;
+        }
+
+        .social-info p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/2fans1pod_logo.jpg') }}" alt="2fans1pod Logo">
+        </div>
+
+        <h1 class="tagline">Your Ultimate CFB Companion</h1>
+        <p class="subtitle">
+            Deep dives, hot takes, and data-driven analysis from two passionate college football fans.
+        </p>
+
+        <a href="/calculator" class="cta-button">🏈 Matchup Calculator</a>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🎙️</div>
+                <h3>Podcast</h3>
+                <p>Weekly episodes breaking down the biggest games</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Analytics</h3>
+                <p>Advanced stats and matchup predictions</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔥</div>
+                <h3>Hot Takes</h3>
+                <p>Unfiltered opinions on all things CFB</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- YouTube Videos Section -->
+    <section class="youtube-section">
+        <div class="section-container">
+            <h2 class="section-title">Latest Episodes</h2>
+            <p class="section-subtitle">Catch up on our recent podcast episodes on YouTube</p>
+
+            <div class="youtube-channel-card">
+                <div class="channel-info">
+                    <div class="channel-icon">📺</div>
+                    <div class="channel-details">
+                        <h3>2fans1pod</h3>
+                        <p>College Football Podcast</p>
+                    </div>
+                </div>
+                <a href="https://www.youtube.com/@2fans1pod" target="_blank" class="subscribe-button">
+                    Watch on YouTube →
+                </a>
+            </div>
+
+            <p class="youtube-note">
+                💡 <strong>Tip:</strong> Subscribe to never miss an episode!
+            </p>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+        <div class="section-container">
+            <h2 class="section-title">Follow Us</h2>
+            <p class="section-subtitle">Stay connected on all platforms</p>
+
+            <div class="social-grid">
+                <a href="https://www.youtube.com/@2fans1pod" target="_blank" class="social-card youtube">
+                    <div class="social-icon">📺</div>
+                    <div class="social-info">
+                        <h3>YouTube</h3>
+                        <p>@2fans1pod</p>
+                    </div>
+                </a>
+
+                <a href="https://x.com/2Fans1Pod" target="_blank" class="social-card twitter">
+                    <div class="social-icon">𝕏</div>
+                    <div class="social-info">
+                        <h3>X (Twitter)</h3>
+                        <p>@2Fans1Pod</p>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/2fans1pod/" target="_blank" class="social-card instagram">
+                    <div class="social-icon">📸</div>
+                    <div class="social-info">
+                        <h3>Instagram</h3>
+                        <p>@2fans1pod</p>
+                    </div>
+                </a>
+
+                <a href="https://www.tiktok.com/2fanspod" target="_blank" class="social-card tiktok">
+                    <div class="social-icon">🎵</div>
+                    <div class="social-info">
+                        <h3>TikTok</h3>
+                        <p>@2fanspod</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
