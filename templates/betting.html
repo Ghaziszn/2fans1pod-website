@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betting Lines - 2fans1pod</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* Navigation bar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .navbar-logo {
+            height: 50px;
+            width: auto;
+            border-radius: 0.5rem;
+        }
+
+        .navbar-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .navbar-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .navbar-link:hover {
+            color: var(--text);
+        }
+
+        .navbar-link.active {
+            color: #f97316;
+        }
+
+        /* Betting page specific styles */
+        .betting-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .week-selector {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .week-selector label {
+            font-size: 1.1rem;
+            margin-right: 10px;
+            font-weight: 600;
+        }
+
+        .week-selector select {
+            padding: 8px 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 2px solid #333;
+            background: white;
+            cursor: pointer;
+        }
+
+        .matchups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .matchup-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .matchup-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .matchup-header {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .team-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .team-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .ats-record {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .ats-good {
+            color: #22c55e;
+        }
+
+        .ats-bad {
+            color: #ef4444;
+        }
+
+        .vs-divider {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin: 5px 0;
+        }
+
+        .betting-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .betting-line {
+            display: flex;
+            flex-direction: column;
+            padding: 8px 0;
+            font-size: 1rem;
+        }
+
+        .line-main {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .line-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .line-value {
+            font-weight: 500;
+            color: #666;
+        }
+
+        .inline-splits {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: #666;
+            padding: 4px 0;
+            flex-wrap: wrap;
+        }
+
+        .inline-splits .split-label {
+            font-weight: 600;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        .inline-splits .split-value {
+            color: #2563eb;
+            font-weight: 500;
+        }
+
+        .inline-splits .split-separator {
+            color: #ccc;
+            margin: 0 4px;
+        }
+
+        .spread-value {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+
+        .provider-info {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.1rem;
+            color: #ef4444;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.1rem;
+            color: #999;
+        }
+
+        /* VSIN Betting Splits Styles */
+        .vsin-splits {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .splits-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .splits-title {
+            color: #333;
+        }
+
+        .splits-indicator {
+            font-size: 0.85rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Color coding for agreement/disagreement */
+        .splits-strong-agree {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 1px solid #28a745;
+        }
+
+        .splits-strong-agree .splits-indicator {
+            color: #155724;
+            font-weight: 700;
+        }
+
+        .splits-agree {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 1px solid #4caf50;
+        }
+
+        .splits-agree .splits-indicator {
+            color: #2e7d32;
+        }
+
+        .splits-disagree {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 1px solid #ffc107;
+        }
+
+        .splits-disagree .splits-indicator {
+            color: #856404;
+            font-weight: 600;
+        }
+
+        .splits-neutral {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 1px solid #dee2e6;
+        }
+
+        .splits-content {
+            padding: 0 4px;
+        }
+
+        .splits-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 0.9rem;
+        }
+
+        .splits-label {
+            font-weight: 600;
+            color: #555;
+            min-width: 110px;
+        }
+
+        .splits-values {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .split-pct {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .split-favorite {
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .split-separator {
+            color: #ccc;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .matchups-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .splits-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .splits-values {
+                justify-content: flex-start;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">
+            <img src="{{ url_for('static', filename='images/2fans1pod_logo.jpg') }}" alt="2fans1pod"
+                class="navbar-logo">
+            <span class="navbar-title">2fans1pod</span>
+        </a>
+        <div class="navbar-links">
+            <a href="/" class="navbar-link">Home</a>
+            <a href="/calculator" class="navbar-link">Calculator</a>
+            <a href="/betting" class="navbar-link active">Betting Lines</a>
+        </div>
+    </nav>
+
+    <div class="betting-container">
+        <h1 style="text-align: center; margin-bottom: 10px;">College Football Betting Lines</h1>
+
+        <div class="week-selector">
+            <label for="weekSelect">Select Week:</label>
+            <select id="weekSelect">
+                <option value="1">Week 1</option>
+                <option value="2">Week 2</option>
+                <option value="3">Week 3</option>
+                <option value="4">Week 4</option>
+                <option value="5">Week 5</option>
+                <option value="6">Week 6</option>
+                <option value="7">Week 7</option>
+                <option value="8">Week 8</option>
+                <option value="9">Week 9</option>
+                <option value="10">Week 10</option>
+                <option value="11">Week 11</option>
+                <option value="12">Week 12</option>
+                <option value="13" selected>Week 13</option>
+                <option value="14">Week 14</option>
+                <option value="15">Week 15</option>
+            </select>
+        </div>
+
+        <div id="status" class="loading">Loading betting data...</div>
+        <div id="matchupsContainer" class="matchups-grid"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/betting.js') }}?v=1763967000"></script>
+</body>
+
+</html>

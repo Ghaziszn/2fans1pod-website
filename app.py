@@ -99,6 +99,85 @@ def create_app():
         
         return jsonify(data), 200
 
+    @app.get("/api/opponent_redzone")
+    @limiter.limit("60/minute")
+    def api_opponent_redzone():
+        """
+        Serve cached opponent redzone (defensive) stats from scraped data.
+        Cache is updated manually by running: python -m scrapers.opponent_redzone_scraper
+        """
+        import json
+        from pathlib import Path
+        
+        cache_file = Path("data/opponent_redzone_stats.json")
+        
+        if not cache_file.exists():
+            return jsonify({"error": "Opponent RedZone data not available. Run scraper first."}), 404
+        
+        with open(cache_file, 'r') as f:
+            data = json.load(f)
+        
+        return jsonify(data), 200
+
+    @app.get("/betting")
+    def betting():
+        """Serve the betting lines page."""
+        return render_template("betting.html")
+
+    @app.get("/api/ats")
+    @limiter.limit("60/minute")
+    def api_ats():
+        """
+        Fetch against-the-spread records for all teams.
+        Example: /api/ats?year=2025
+        """
+        year = request.args.get("year", type=int, default=2025)
+        data, code = cfbd_get("/teams/ats", {"year": year})
+        return (jsonify(data), code)
+
+    @app.get("/api/lines")
+    @limiter.limit("60/minute")
+    def api_lines():
+        """
+        Fetch betting lines for a specific week.
+        Example: /api/lines?year=2025&week=13
+        Optional: &provider=Bovada to filter by provider
+        """
+        year = request.args.get("year", type=int, default=2025)
+        week = request.args.get("week", type=int)
+        provider = request.args.get("provider", type=str)  # No default - get all providers
+        
+        if not week:
+            return jsonify({"error": "week parameter is required"}), 400
+        
+        params = {"year": year, "week": week}
+        if provider:  # Only add provider filter if explicitly specified
+            params["provider"] = provider
+            
+        data, code = cfbd_get("/lines", params)
+        return (jsonify(data), code)
+
+    @app.get("/api/vsin_splits")
+    @limiter.limit("60/minute")
+    def api_vsin_splits():
+        """
+        Serve cached VSIN betting splits data.
+        Cache is updated manually by running: python -m scrapers.vsin_betting_splits_scraper
+        """
+        import json
+        from pathlib import Path
+        
+        cache_file = Path("data/vsin_betting_splits.json")
+        
+        if not cache_file.exists():
+            return jsonify({"error": "VSIN splits data not available. Run scraper first."}), 404
+        
+        with open(cache_file, 'r') as f:
+            data = json.load(f)
+        
+        return jsonify(data), 200
+
+
     @app.get("/data/<path:filename>")
     def serve_data(filename):
         return send_from_directory("data", filename)

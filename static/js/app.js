@@ -7,7 +7,8 @@ const fmt1 = (x) => (x == null || isNaN(x)) ? "—" : Number(x).toFixed(1);
 let SOS = {};
 let ALL_STATS = []; // Stores stats for ALL teams to compute rankings
 let RANKINGS = {};  // Stores pre-computed rankings for each metric
-let REDZONE_DATA = {}; // Stores scraped redzone stats
+let REDZONE_DATA = {}; // Stores scraped redzone stats (offense)
+let OPPONENT_REDZONE_DATA = {}; // Stores scraped opponent redzone stats (defense)
 
 // Load SOS JSON
 async function loadSOS() {
@@ -19,7 +20,7 @@ async function loadSOS() {
   }
 }
 
-// Load RedZone data
+// Load RedZone data (offense)
 async function loadRedZone() {
   try {
     const res = await fetch('/api/redzone');
@@ -30,9 +31,26 @@ async function loadRedZone() {
     const data = await res.json();
     // Store teams data (data.teams is the object with team names as keys)
     REDZONE_DATA = data.teams || {};
-    console.log(`[RedZone] Loaded data for ${Object.keys(REDZONE_DATA).length} teams`);
+    console.log(`[RedZone] Loaded offense data for ${Object.keys(REDZONE_DATA).length} teams`);
   } catch (e) {
     console.warn("RedZone load failed", e);
+  }
+}
+
+// Load Opponent RedZone data (defense)
+async function loadOpponentRedZone() {
+  try {
+    const res = await fetch('/api/opponent_redzone');
+    if (!res.ok) {
+      console.warn("Opponent RedZone data not available");
+      return;
+    }
+    const data = await res.json();
+    // Store teams data (data.teams is the object with team names as keys)
+    OPPONENT_REDZONE_DATA = data.teams || {};
+    console.log(`[OpponentRedZone] Loaded defense data for ${Object.keys(OPPONENT_REDZONE_DATA).length} teams`);
+  } catch (e) {
+    console.warn("Opponent RedZone load failed", e);
   }
 }
 
@@ -141,17 +159,32 @@ function computeMetricsFromStats(rows) {
 
   // Merge RedZone data if available
   const teamName = rows[0]?.team;
+
+  // Merge offensive red zone data
   if (teamName && REDZONE_DATA[teamName]) {
     const rzData = REDZONE_DATA[teamName];
-    console.log(`[RedZone] Merging data for ${teamName}:`, rzData);
+    console.log(`[RedZone] Merging offense data for ${teamName}:`, rzData);
 
     // Parse redzone percentage from scraped data
     // The "Score %" field is a string like "90.24" (percentage)
     if (rzData["Score %"]) {
       const rzPct = parseFloat(rzData["Score %"]) / 100; // Convert to decimal
       off.rzPct = rzPct;
-      // Note: Defense RZ% would need opponent redzone data which we don't have
       console.log(`[RedZone] Set ${teamName} offense RZ% to ${(rzPct * 100).toFixed(1)}%`);
+    }
+  }
+
+  // Merge defensive red zone data (opponent conversion rate)
+  if (teamName && OPPONENT_REDZONE_DATA[teamName]) {
+    const oppRzData = OPPONENT_REDZONE_DATA[teamName];
+    console.log(`[OpponentRedZone] Merging defense data for ${teamName}:`, oppRzData);
+
+    // Parse opponent redzone percentage from scraped data
+    // The "Score %" field is a string like "61.11" (percentage opponents score)
+    if (oppRzData["Score %"]) {
+      const oppRzPct = parseFloat(oppRzData["Score %"]) / 100; // Convert to decimal
+      def.rzPct = oppRzPct;
+      console.log(`[OpponentRedZone] Set ${teamName} defense RZ% to ${(oppRzPct * 100).toFixed(1)}%`);
     }
   }
 
@@ -311,13 +344,17 @@ function renderComparison(containerId, team1, m1, team2, m2, label1, label2) {
 
 // Main Event Listeners
 document.addEventListener("DOMContentLoaded", async () => {
+  console.log("[App] Version 999999 loaded");
   console.log("[Auto-load] Starting...");
   await loadSOS();
   console.log("[Auto-load] SOS loaded");
 
-  // Load RedZone data
-  await loadRedZone();
-  console.log("[Auto-load] RedZone data loaded");
+  // Load RedZone data (both offense and defense)
+  await Promise.all([
+    loadRedZone(),
+    loadOpponentRedZone()
+  ]);
+  console.log("[Auto-load] RedZone data loaded (offense + defense)");
 
   // Auto-load teams on page load
   try {
@@ -341,25 +378,66 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     $("status").textContent = `Ready. Loaded ${names.length} teams.`;
     console.log("[Auto-load] Complete!");
+
+    // Check for URL parameters (from betting page navigation)
+    const urlParams = new URLSearchParams(window.location.search);
+    const team1ParamRaw = urlParams.get('team1');
+    const team2ParamRaw = urlParams.get('team2');
+
+    console.log(`[URL Params] Search: "${window.location.search}"`);
+    console.log(`[URL Params] Raw params: team1="${team1ParamRaw}", team2="${team2ParamRaw}"`);
+
+    if (team1ParamRaw && team2ParamRaw) {
+      const team1Param = team1ParamRaw.trim();
+      const team2Param = team2ParamRaw.trim();
+      console.log(`[URL Params] Available teams (first 5):`, names.slice(0, 5));
+
+      // Debug: search for partial matches
+      const dukeCheck = names.filter(n => n.toLowerCase().includes("duke"));
+      const ncCheck = names.filter(n => n.toLowerCase().includes("north carolina"));
+      console.log(`[Debug] Teams containing 'duke':`, dukeCheck);
+      console.log(`[Debug] Teams containing 'north carolina':`, ncCheck);
+
+      // Helper to find team (exact or case-insensitive)
+      const findTeam = (t) => {
+        if (names.includes(t)) return t;
+        return names.find(n => n.toLowerCase() === t.toLowerCase());
+      };
+
+      const team1Match = findTeam(team1Param);
+      const team2Match = findTeam(team2Param);
+
+      console.log(`[URL Params] Matches: team1="${team1Match}", team2="${team2Match}"`);
+
+      if (team1Match && team2Match) {
+        // Set the dropdown values
+        $("team1").value = team1Match;
+        $("team2").value = team2Match;
+
+        console.log(`[URL Params] Set dropdowns to: team1=${$("team1").value}, team2=${$("team2").value}`);
+
+        // Automatically trigger the comparison
+        console.log("[URL Params] Auto-triggering comparison...");
+        setTimeout(() => {
+          runComparison();
+        }, 500); // Increased delay to ensure DOM is ready
+      } else {
+        console.warn(`[URL Params] Teams not found. team1Match=${team1Match}, team2Match=${team2Match}`);
+        $("status").textContent = `Could not find teams: "${team1Param}" or "${team2Param}"`;
+      }
+    }
   } catch (e) {
     $("status").textContent = "Failed to load data";
     console.error("[Auto-load] Error:", e);
   }
 
-  $("runCompare").addEventListener("click", async () => {
+  // Comparison function (extracted for reuse)
+  function runComparison() {
     const year = Number($("seasonYear").value) || 2025;
     const teamA = $("team1").value;
     const teamB = $("team2").value;
     if (!teamA || !teamB) { $("status").textContent = "Pick both teams"; return; }
 
-    // We already have ALL_STATS, so we can just find the teams in there
-    // But to be safe/consistent with the previous logic (and ensure we have the specific team object structure),
-    // we can filter ALL_STATS or just use the cached data if we structured it well.
-    // The current computeRankings implementation groups by team.
-    // Let's just re-use that or fetch if missing (though we should have it).
-
-    // Optimization: Filter from ALL_STATS instead of re-fetching
-    // But ALL_STATS is a flat list of rows.
     const rowsA = ALL_STATS.filter(r => r.team === teamA);
     const rowsB = ALL_STATS.filter(r => r.team === teamB);
 
@@ -385,5 +463,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderComparison("grid2", teamB, mB, teamA, mA, "Offense", "Defense");
 
     $("status").textContent = `Comparison generated for ${teamA} vs ${teamB}`;
+  }
+
+  // Button click handler calls the comparison function
+  $("runCompare").addEventListener("click", () => {
+    runComparison();
   });
 });
