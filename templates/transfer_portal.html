@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Transfer Portal - 2fans1pod</title>
+    <meta name="description"
+        content="College football transfer portal tracker with player ratings, positions, and destinations">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=5">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/transfer_portal.css') }}?v=1">
+    <style>
+        .navbar {
+            background: rgba(10, 15, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .navbar-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+        }
+
+        .navbar-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            background: linear-gradient(to right, #f97316, #ea580c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .navbar-link:hover {
+            color: var(--text);
+        }
+
+        .navbar-link.active {
+            color: #f97316;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">
+            <img src="{{ url_for('static', filename='images/2fans1pod_logo.jpg') }}" alt="2fans1pod"
+                class="navbar-logo">
+            <span class="navbar-title">2fans1pod</span>
+        </a>
+        <div class="navbar-links">
+            <a href="/" class="navbar-link">Home</a>
+            <a href="/calculator" class="navbar-link">Calculator</a>
+            <a href="/betting" class="navbar-link">Betting Lines</a>
+            <a href="/coaching-power-index" class="navbar-link">Coaching Power Index</a>
+            <a href="/transfer-portal" class="navbar-link active">Transfer Portal</a>
+            <a href="/recruiting" class="navbar-link">Recruiting</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1 class="page-title">🔄 Transfer Portal Tracker</h1>
+            <p class="page-subtitle">Track college football player transfers with ratings, positions, and destinations
+            </p>
+        </header>
+
+        <div class="controls">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input"
+                    placeholder="🔍 Search players, schools, positions...">
+            </div>
+
+            <div class="filters">
+                <select id="yearFilter" class="filter-select">
+                    <option value="">Loading years...</option>
+                </select>
+
+                <select id="positionFilter" class="filter-select">
+                    <option value="">All Positions</option>
+                    <option value="QB">QB</option>
+                    <option value="RB">RB</option>
+                    <option value="WR">WR</option>
+                    <option value="TE">TE</option>
+                    <option value="OL">OL</option>
+                    <option value="DL">DL</option>
+                    <option value="LB">LB</option>
+                    <option value="DB">DB</option>
+                    <option value="S">S</option>
+                    <option value="CB">CB</option>
+                    <option value="K">K</option>
+                    <option value="P">P</option>
+                </select>
+
+                <select id="starsFilter" class="filter-select">
+                    <option value="">All Ratings</option>
+                    <option value="5">5★ Only</option>
+                    <option value="4">4★+</option>
+                    <option value="3">3★+</option>
+                </select>
+
+                <select id="sortBy" class="filter-select">
+                    <option value="rating_desc">Highest Rating</option>
+                    <option value="rating_asc">Lowest Rating</option>
+                    <option value="date_desc">Most Recent</option>
+                    <option value="date_asc">Oldest First</option>
+                    <option value="name_asc">Name (A-Z)</option>
+                    <option value="name_desc">Name (Z-A)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="stats-summary" id="statsSummary">
+            <div class="stat-card">
+                <div class="stat-value" id="totalTransfers">-</div>
+                <div class="stat-label">Total Transfers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="avgStars">-</div>
+                <div class="stat-label">Avg Stars</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="topPosition">-</div>
+                <div class="stat-label">Top Position</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div id="loadingSpinner" class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Loading transfer portal data...</p>
+            </div>
+
+            <table id="transferTable" class="transfer-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th data-sort="name" class="sortable">Player</th>
+                        <th data-sort="position" class="sortable">Position</th>
+                        <th data-sort="origin" class="sortable">From</th>
+                        <th data-sort="destination" class="sortable">To</th>
+                        <th data-sort="transfer_date" class="sortable">Date</th>
+                        <th data-sort="rating" class="sortable">Rating</th>
+                        <th data-sort="stars" class="sortable">Stars</th>
+                        <th data-sort="eligibility" class="sortable">Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No transfers found matching your criteria</p>
+            </div>
+        </div>
+
+        <div class="data-info">
+            <p>Last updated: <span id="lastUpdated">-</span> | Total transfers: <span id="totalCount">-</span></p>
+            <p class="data-note">💡 Click column headers to sort | Use filters to narrow results | Data from CFBD API
+            </p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/transfer_portal.js') }}?v=1"></script>
+</body>
+
+</html>

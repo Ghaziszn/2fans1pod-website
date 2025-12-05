@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coaching Power Index - 2fans1pod</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=5">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/coaching_power_index.css') }}?v=1">
+    <style>
+        .navbar {
+            background: rgba(10, 15, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .navbar-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+        }
+
+        .navbar-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            background: linear-gradient(to right, #f97316, #ea580c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .navbar-link:hover {
+            color: var(--text);
+        }
+
+        .navbar-link.active {
+            color: #f97316;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">
+            <img src="{{ url_for('static', filename='images/2fans1pod_logo.jpg') }}" alt="2fans1pod"
+                class="navbar-logo">
+            <span class="navbar-title">2fans1pod</span>
+        </a>
+        <div class="navbar-links">
+            <a href="/" class="navbar-link">Home</a>
+            <a href="/calculator" class="navbar-link">Calculator</a>
+            <a href="/betting" class="navbar-link">Betting Lines</a>
+            <a href="/coaching-power-index" class="navbar-link active">Coaching Power Index</a>
+            <a href="/transfer-portal" class="navbar-link">Transfer Portal</a>
+            <a href="/recruiting" class="navbar-link">Recruiting</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1 class="page-title">🏆 Coaching Power Index</h1>
+            <p class="page-subtitle">Comprehensive rankings and statistics for college football coaches</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input"
+                    placeholder="🔍 Search coaches, schools, conferences...">
+            </div>
+
+            <div class="filters">
+                <select id="divisionFilter" class="filter-select">
+                    <option value="">All Divisions</option>
+                    <option value="ACC">ACC</option>
+                    <option value="SEC">SEC</option>
+                    <option value="BIG10">BIG10</option>
+                    <option value="B12">B12</option>
+                    <option value="G5">G5</option>
+                </select>
+
+                <select id="sortBy" class="filter-select">
+                    <option value="weighted_score">Weighted Score</option>
+                    <option value="total_wins">Total Wins</option>
+                    <option value="win_percentage">Win %</option>
+                    <option value="tenure">Tenure</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="stats-summary" id="statsSummary">
+            <div class="stat-card">
+                <div class="stat-value" id="totalCoaches">-</div>
+                <div class="stat-label">Total Coaches</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="avgWinPct">-</div>
+                <div class="stat-label">Avg Win %</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="avgTenure">-</div>
+                <div class="stat-label">Avg Tenure</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div id="loadingSpinner" class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Loading coaching data...</p>
+            </div>
+
+            <table id="coachingTable" class="coaching-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th data-sort="rank" class="sortable">Rank</th>
+                        <th data-sort="coach" class="sortable">Coach</th>
+                        <th data-sort="school" class="sortable">School</th>
+                        <th data-sort="division" class="sortable">Division</th>
+                        <th data-sort="total_tenure" class="sortable">Tenure</th>
+                        <th data-sort="total_wins" class="sortable">Wins</th>
+                        <th data-sort="total_losses" class="sortable">Losses</th>
+                        <th data-sort="win_pct" class="sortable">Win %</th>
+                        <th data-sort="t25_wins" class="sortable">T25 Wins</th>
+                        <th data-sort="championships" class="sortable">Conf Champs</th>
+                        <th data-sort="bowl_wins" class="sortable">Bowl Wins</th>
+                        <th data-sort="weighted_score" class="sortable active desc">Score</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No coaches found matching your criteria</p>
+            </div>
+        </div>
+
+        <div class="data-info">
+            <p>Last updated: <span id="lastUpdated">-</span> | Total coaches: <span id="totalCount">-</span></p>
+            <p class="data-note">💡 Click column headers to sort | Use search to filter by coach, school, or conference
+            </p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/coaching_power_index.js') }}?v=1"></script>
+</body>
+
+</html>

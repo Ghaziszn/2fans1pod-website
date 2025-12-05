@@ -185,6 +185,104 @@ def save_to_cache(data, filepath="data/vsin_betting_splits.json"):
     print(f"💾 Saved to {filepath}")
 
 
+def is_cache_stale(filepath="data/vsin_betting_splits.json", max_age_hours=24):
+    """
+    Check if the cached data is stale (older than max_age_hours).
+    
+    Args:
+        filepath: Path to the cache file
+        max_age_hours: Maximum age in hours before data is considered stale
+    
+    Returns:
+        True if cache doesn't exist or is stale, False otherwise
+    """
+    from pathlib import Path
+    
+    cache_file = Path(filepath)
+    
+    # If cache doesn't exist, it's stale
+    if not cache_file.exists():
+        return True
+    
+    try:
+        with open(cache_file, 'r') as f:
+            data = json.load(f)
+        
+        # Check if scraped_at timestamp exists
+        if 'scraped_at' not in data:
+            return True
+        
+        # Parse the timestamp and check age
+        scraped_at = datetime.fromisoformat(data['scraped_at'].replace('Z', '+00:00'))
+        age = datetime.utcnow() - scraped_at.replace(tzinfo=None)
+        age_hours = age.total_seconds() / 3600
+        
+        return age_hours > max_age_hours
+        
+    except (json.JSONDecodeError, ValueError, KeyError) as e:
+        print(f"⚠️  Error reading cache: {e}")
+        return True
+
+
+def update_cache_if_needed(filepath="data/vsin_betting_splits.json", max_age_hours=24, force=False):
+    """
+    Update the cache if it's stale or if force=True.
+    
+    Args:
+        filepath: Path to the cache file
+        max_age_hours: Maximum age in hours before data is considered stale
+        force: If True, update cache regardless of age
+    
+    Returns:
+        dict with keys:
+            - 'updated': bool indicating if cache was updated
+            - 'success': bool indicating if update was successful (if attempted)
+            - 'error': error message if update failed
+            - 'age_hours': age of data in hours (if cache exists)
+    """
+    from pathlib import Path
+    
+    result = {
+        'updated': False,
+        'success': True,
+        'error': None,
+        'age_hours': None
+    }
+    
+    # Calculate current cache age
+    cache_file = Path(filepath)
+    if cache_file.exists():
+        try:
+            with open(cache_file, 'r') as f:
+                data = json.load(f)
+            if 'scraped_at' in data:
+                scraped_at = datetime.fromisoformat(data['scraped_at'].replace('Z', '+00:00'))
+                age = datetime.utcnow() - scraped_at.replace(tzinfo=None)
+                result['age_hours'] = age.total_seconds() / 3600
+        except Exception:
+            pass
+    
+    # Check if update is needed
+    if force or is_cache_stale(filepath, max_age_hours):
+        print(f"🔄 Cache is stale or force update requested. Updating...")
+        try:
+            data = scrape_vsin_betting_splits()
+            save_to_cache(data, filepath)
+            result['updated'] = True
+            result['success'] = True
+            result['age_hours'] = 0
+            print(f"✅ Cache updated successfully")
+        except Exception as e:
+            print(f"❌ Error updating cache: {e}")
+            result['updated'] = True
+            result['success'] = False
+            result['error'] = str(e)
+    else:
+        print(f"✓ Cache is fresh (age: {result['age_hours']:.1f} hours)")
+    
+    return result
+
+
 if __name__ == "__main__":
     # When run directly, scrape and save to cache
     data = scrape_vsin_betting_splits()

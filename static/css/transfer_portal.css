@@ -1,0 +1,400 @@
+/* Transfer Portal Page Styles */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #dc2626 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+}
+
+/* Controls Section */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.search-container {
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    color: var(--text);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #f97316;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    flex: 1;
+    min-width: 150px;
+    padding: 0.875rem 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-select:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #f97316;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #f97316;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+/* Stats Summary */
+.stats-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(234, 88, 12, 0.05) 100%);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
+    border-color: rgba(249, 115, 22, 0.4);
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #f97316, #ea580c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Table Container */
+.table-container {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    min-height: 400px;
+    position: relative;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    gap: 1rem;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(249, 115, 22, 0.1);
+    border-top-color: #f97316;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* Transfer Table */
+.transfer-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transfer-table thead {
+    background: rgba(249, 115, 22, 0.1);
+    border-bottom: 2px solid rgba(249, 115, 22, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.transfer-table th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.transfer-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.transfer-table th.sortable:hover {
+    color: #f97316;
+    background: rgba(249, 115, 22, 0.15);
+}
+
+.transfer-table th.sortable::after {
+    content: ' ↕';
+    opacity: 0.3;
+    font-size: 0.75rem;
+}
+
+.transfer-table th.sortable.active::after {
+    opacity: 1;
+    color: #f97316;
+}
+
+.transfer-table th.sortable.asc::after {
+    content: ' ↑';
+}
+
+.transfer-table th.sortable.desc::after {
+    content: ' ↓';
+}
+
+.transfer-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: all 0.2s ease;
+}
+
+.transfer-table tbody tr:hover {
+    background: rgba(249, 115, 22, 0.05);
+}
+
+.transfer-table td {
+    padding: 1rem 1.5rem;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+/* Player Name Column */
+.player-name {
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Position Badge */
+.position-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(249, 115, 22, 0.15);
+    border: 1px solid rgba(249, 115, 22, 0.3);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #f97316;
+}
+
+/* School Names */
+.school-name {
+    font-weight: 500;
+}
+
+.school-name.unknown {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Transfer Date */
+.transfer-date {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+/* Rating Display */
+.rating-value {
+    font-weight: 700;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.rating-value.high {
+    color: #10b981;
+}
+
+.rating-value.medium {
+    color: #f59e0b;
+}
+
+.rating-value.low {
+    color: var(--text-muted);
+}
+
+/* Stars Display */
+.stars {
+    display: inline-flex;
+    gap: 0.125rem;
+    font-size: 1rem;
+}
+
+.star {
+    color: #fbbf24;
+}
+
+.star.empty {
+    color: rgba(251, 191, 36, 0.2);
+}
+
+/* Eligibility Badge */
+.eligibility-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: #3b82f6;
+    text-transform: uppercase;
+}
+
+/* No Results */
+.no-results {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.no-results p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+}
+
+/* Data Info */
+.data-info {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.data-info p {
+    margin: 0.25rem 0;
+}
+
+.data-note {
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .transfer-table {
+        font-size: 0.875rem;
+    }
+
+    .transfer-table th,
+    .transfer-table td {
+        padding: 0.75rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    .filter-select {
+        width: 100%;
+    }
+
+    .stats-summary {
+        grid-template-columns: 1fr;
+    }
+
+    /* Make table scrollable on mobile */
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .transfer-table {
+        min-width: 800px;
+    }
+
+    .transfer-table th,
+    .transfer-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}

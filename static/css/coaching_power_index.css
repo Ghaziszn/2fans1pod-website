@@ -1,0 +1,465 @@
+/* Coaching Power Index Styles */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    background: linear-gradient(135deg, #f97316, #ea580c, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInDown 0.6s ease-out;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin: 0;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.search-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 0.75rem;
+    color: var(--text);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #f97316;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    padding: 0.875rem 1.25rem;
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 0.75rem;
+    color: var(--text);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 180px;
+}
+
+.filter-select:hover {
+    border-color: #f97316;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #f97316;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+/* Stats Summary */
+.stats-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    border-color: #f97316;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2);
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #f97316;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Table Container */
+.table-container {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem;
+    border: 4px solid var(--border);
+    border-top-color: #f97316;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* Table Styles */
+.coaching-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.coaching-table thead {
+    background: linear-gradient(135deg, #1a1f2e, #0f1419);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.coaching-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 700;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+}
+
+.coaching-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    position: relative;
+    padding-right: 2rem;
+}
+
+.coaching-table th.sortable:hover {
+    color: #f97316;
+    background: rgba(249, 115, 22, 0.1);
+}
+
+.coaching-table th.sortable::after {
+    content: '⇅';
+    position: absolute;
+    right: 0.75rem;
+    opacity: 0.3;
+    font-size: 1rem;
+}
+
+.coaching-table th.sortable.active::after {
+    opacity: 1;
+    color: #f97316;
+}
+
+.coaching-table th.sortable.active.asc::after {
+    content: '↑';
+}
+
+.coaching-table th.sortable.active.desc::after {
+    content: '↓';
+}
+
+.coaching-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: all 0.2s ease;
+}
+
+.coaching-table tbody tr:hover {
+    background: rgba(249, 115, 22, 0.05);
+}
+
+.coaching-table tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.coaching-table tbody tr:nth-child(odd):hover {
+    background: rgba(249, 115, 22, 0.05);
+}
+
+.coaching-table td {
+    padding: 1rem;
+    color: var(--text);
+}
+
+/* Rank Column */
+.coaching-table td:first-child {
+    font-weight: 700;
+    color: #f97316;
+    font-size: 1.1rem;
+}
+
+/* Top 3 Ranks */
+.coaching-table tr.rank-1 td:first-child {
+    color: #fbbf24;
+    font-size: 1.2rem;
+}
+
+.coaching-table tr.rank-2 td:first-child {
+    color: #94a3b8;
+    font-size: 1.15rem;
+}
+
+.coaching-table tr.rank-3 td:first-child {
+    color: #cd7f32;
+    font-size: 1.1rem;
+}
+
+/* Coach Name */
+.coach-name {
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* School */
+.school-name {
+    font-weight: 500;
+}
+
+/* Division Badges */
+.division-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.division-badge.acc {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+.division-badge.sec {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.division-badge.big10 {
+    background: rgba(168, 85, 247, 0.2);
+    color: #a78bfa;
+}
+
+.division-badge.b12 {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+
+.division-badge.g5 {
+    background: rgba(249, 115, 22, 0.2);
+    color: #fb923c;
+}
+
+/* Win Percentage */
+.win-pct {
+    font-weight: 600;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.win-pct.excellent {
+    color: #4ade80;
+}
+
+.win-pct.good {
+    color: #60a5fa;
+}
+
+.win-pct.average {
+    color: #fbbf24;
+}
+
+.win-pct.poor {
+    color: #f87171;
+}
+
+/* Score */
+.score {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #f97316;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* No Results */
+.no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.no-results p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+/* Data Info */
+.data-info {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.data-info p {
+    margin: 0.5rem 0;
+}
+
+.data-note {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .coaching-table {
+        font-size: 0.9rem;
+    }
+
+    .coaching-table th,
+    .coaching-table td {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .page-subtitle {
+        font-size: 1rem;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .filters {
+        width: 100%;
+    }
+
+    .filter-select {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .coaching-table {
+        font-size: 0.85rem;
+        min-width: 1000px;
+    }
+
+    .coaching-table th,
+    .coaching-table td {
+        padding: 0.5rem;
+    }
+
+    .stats-summary {
+        grid-template-columns: 1fr;
+    }
+}
