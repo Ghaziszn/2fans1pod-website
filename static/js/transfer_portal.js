@@ -89,7 +89,7 @@ function populateYearFilter(currentYear) {
 
     // Generate years from 2021 to current year
     const startYear = 2021;
-    const endYear = new Date().getFullYear();
+    const endYear = 2026;
 
     for (let year = endYear; year >= startYear; year--) {
         const option = document.createElement('option');

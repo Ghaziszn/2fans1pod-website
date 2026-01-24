@@ -102,13 +102,25 @@ function getVSINSplits(awayTeam, homeTeam) {
 }
 
 // Load betting lines for a specific week
-async function loadLines(week) {
+async function loadLines(weekIdentifier) {
     try {
-        $("status").textContent = `Loading Week ${week} betting lines...`;
+        let title = `Week ${weekIdentifier}`;
+        let seasonType = "regular";
+        let week = weekIdentifier;
+
+        // Handle postseason identifiers (e.g., "postseason-1")
+        if (typeof weekIdentifier === 'string' && weekIdentifier.includes('postseason')) {
+            const parts = weekIdentifier.split('-');
+            seasonType = parts[0];
+            week = parts[1];
+            title = "Bowls / CFP";
+        }
+
+        $("status").textContent = `Loading ${title} betting lines...`;
         $("status").className = "loading";
         $("matchupsContainer").innerHTML = "";
 
-        const res = await fetch(`/api/lines?year=${YEAR}&week=${week}`);
+        const res = await fetch(`/api/lines?year=${YEAR}&week=${week}&seasonType=${seasonType}`);
         if (!res.ok) {
             throw new Error(`Failed to fetch lines: ${res.status}`);
         }
@@ -407,7 +419,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Week selector change handler
     weekSelect.addEventListener("change", (e) => {
-        const week = parseInt(e.target.value);
+        const week = e.target.value;
         loadLines(week);
     });
 });

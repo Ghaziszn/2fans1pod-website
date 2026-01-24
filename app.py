@@ -17,7 +17,7 @@ def create_app():
     app = Flask(__name__)
     app.config.update(
         JSON_SORT_KEYS=False,
-        SEND_FILE_MAX_AGE_DEFAULT=timedelta(hours=1),
+        SEND_FILE_MAX_AGE_DEFAULT=0,
     )
 
     cache = Cache(app, config={"CACHE_TYPE": "SimpleCache", "CACHE_DEFAULT_TIMEOUT": 300})
@@ -409,16 +409,19 @@ def create_app():
         """
         Fetch betting lines for a specific week.
         Example: /api/lines?year=2025&week=13
-        Optional: &provider=Bovada to filter by provider
+        Optional: 
+        - &provider=Bovada to filter by provider
+        - &seasonType=regular (default) or postseason
         """
         year = request.args.get("year", type=int, default=2025)
         week = request.args.get("week", type=int)
         provider = request.args.get("provider", type=str)  # No default - get all providers
+        season_type = request.args.get("seasonType", type=str, default="regular")
         
         if not week:
             return jsonify({"error": "week parameter is required"}), 400
         
-        params = {"year": year, "week": week}
+        params = {"year": year, "week": week, "seasonType": season_type}
         if provider:  # Only add provider filter if explicitly specified
             params["provider"] = provider
             

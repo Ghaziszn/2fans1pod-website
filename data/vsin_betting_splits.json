@@ -1,490 +1,1030 @@
 {
-  "scraped_at": "2025-12-05T03:39:24.735267",
+  "scraped_at": "2025-12-16T06:55:09.033505",
   "games": [
     {
-      "away_team": "Kennesaw ST",
+      "away_team": "Troy",
       "home_team": "Jacksonville ST",
       "spread": {
-        "away_line": "-2.5",
-        "home_line": "+2.5",
-        "away_handle_pct": 71,
-        "home_handle_pct": 29,
-        "away_bets_pct": 60,
-        "home_bets_pct": 40
-      },
-      "total": {
-        "line": "60.5",
-        "over_handle_pct": 73,
-        "under_handle_pct": 27,
-        "over_bets_pct": 59,
-        "under_bets_pct": 41
-      },
-      "moneyline": {
-        "away_line": "-135",
-        "home_line": "+114",
-        "away_handle_pct": 54,
-        "home_handle_pct": 46,
-        "away_bets_pct": 50,
-        "home_bets_pct": 50
-      }
-    },
-    {
-      "away_team": "Troy",
-      "home_team": "James Madison",
-      "spread": {
-        "away_line": "+23.5",
-        "home_line": "-23.5",
-        "away_handle_pct": 20,
-        "home_handle_pct": 80,
-        "away_bets_pct": 35,
-        "home_bets_pct": 65
-      },
-      "total": {
-        "line": "46.5",
-        "over_handle_pct": 71,
-        "under_handle_pct": 29,
-        "over_bets_pct": 82,
-        "under_bets_pct": 18
-      },
-      "moneyline": {
-        "away_line": "+1300",
-        "home_line": "-2800",
-        "away_handle_pct": 50,
-        "home_handle_pct": 50,
-        "away_bets_pct": 10,
-        "home_bets_pct": 90
-      }
-    },
-    {
-      "away_team": "North Texas",
-      "home_team": "Tulane",
-      "spread": {
-        "away_line": "-2.5",
-        "home_line": "+2.5",
-        "away_handle_pct": 59,
-        "home_handle_pct": 41,
-        "away_bets_pct": 66,
-        "home_bets_pct": 34
-      },
-      "total": {
-        "line": "66.5",
-        "over_handle_pct": 80,
-        "under_handle_pct": 20,
-        "over_bets_pct": 65,
-        "under_bets_pct": 35
-      },
-      "moneyline": {
-        "away_line": "-135",
-        "home_line": "+114",
-        "away_handle_pct": 58,
-        "home_handle_pct": 42,
-        "away_bets_pct": 49,
-        "home_bets_pct": 51
-      }
-    },
-    {
-      "away_team": "UNLV",
-      "home_team": "Boise ST",
-      "spread": {
-        "away_line": "+4.5",
-        "home_line": "-4.5",
-        "away_handle_pct": 47,
-        "home_handle_pct": 53,
-        "away_bets_pct": 38,
-        "home_bets_pct": 62
-      },
-      "total": {
-        "line": "57.5",
-        "over_handle_pct": 83,
-        "under_handle_pct": 17,
-        "over_bets_pct": 62,
-        "under_bets_pct": 38
-      },
-      "moneyline": {
-        "away_line": "+180",
-        "home_line": "-218",
-        "away_handle_pct": 49,
-        "home_handle_pct": 51,
-        "away_bets_pct": 29,
-        "home_bets_pct": 71
-      }
-    },
-    {
-      "away_team": "Miami OH",
-      "home_team": "Western Michigan",
-      "spread": {
-        "away_line": "+1.5",
-        "home_line": "-1.5",
-        "away_handle_pct": 59,
-        "home_handle_pct": 41,
-        "away_bets_pct": 39,
-        "home_bets_pct": 61
-      },
-      "total": {
-        "line": "43.5",
-        "over_handle_pct": 35,
-        "under_handle_pct": 65,
-        "over_bets_pct": 60,
-        "under_bets_pct": 40
-      },
-      "moneyline": {
-        "away_line": "+102",
-        "home_line": "-122",
-        "away_handle_pct": 35,
-        "home_handle_pct": 65,
-        "away_bets_pct": 36,
-        "home_bets_pct": 64
-      }
-    },
-    {
-      "away_team": "Texas Tech",
-      "home_team": "BYU",
-      "spread": {
-        "away_line": "-12.5",
-        "home_line": "+12.5",
-        "away_handle_pct": 40,
-        "home_handle_pct": 60,
-        "away_bets_pct": 57,
-        "home_bets_pct": 43
+        "away_line": "-1.5",
+        "home_line": "+1.5",
+        "away_handle_pct": 48,
+        "home_handle_pct": 52,
+        "away_bets_pct": 55,
+        "home_bets_pct": 45
       },
       "total": {
         "line": "49.5",
-        "over_handle_pct": 60,
-        "under_handle_pct": 40,
-        "over_bets_pct": 65,
-        "under_bets_pct": 35
-      },
-      "moneyline": {
-        "away_line": "-550",
-        "home_line": "+410",
-        "away_handle_pct": 51,
-        "home_handle_pct": 49,
-        "away_bets_pct": 86,
-        "home_bets_pct": 14
-      }
-    },
-    {
-      "away_team": "Georgia",
-      "home_team": "Alabama",
-      "spread": {
-        "away_line": "-2.5",
-        "home_line": "+2.5",
-        "away_handle_pct": 52,
-        "home_handle_pct": 48,
-        "away_bets_pct": 70,
-        "home_bets_pct": 30
-      },
-      "total": {
-        "line": "48.5",
-        "over_handle_pct": 72,
-        "under_handle_pct": 28,
+        "over_handle_pct": 41,
+        "under_handle_pct": 59,
         "over_bets_pct": 67,
         "under_bets_pct": 33
       },
       "moneyline": {
-        "away_line": "-135",
-        "home_line": "+114",
-        "away_handle_pct": 72,
-        "home_handle_pct": 28,
-        "away_bets_pct": 62,
-        "home_bets_pct": 38
+        "away_line": "-118",
+        "home_line": "-102",
+        "away_handle_pct": 21,
+        "home_handle_pct": 79,
+        "away_bets_pct": 54,
+        "home_bets_pct": 46
       }
     },
     {
-      "away_team": "Duke",
-      "home_team": "Virginia",
+      "away_team": "Old Dominion",
+      "home_team": "South Florida",
       "spread": {
-        "away_line": "+4",
-        "home_line": "-4",
-        "away_handle_pct": 12,
-        "home_handle_pct": 88,
-        "away_bets_pct": 17,
-        "home_bets_pct": 83
+        "away_line": "+3",
+        "home_line": "-3",
+        "away_handle_pct": 54,
+        "home_handle_pct": 46,
+        "away_bets_pct": 27,
+        "home_bets_pct": 73
       },
       "total": {
-        "line": "57.5",
-        "over_handle_pct": 78,
-        "under_handle_pct": 22,
-        "over_bets_pct": 54,
-        "under_bets_pct": 46
+        "line": "53.5",
+        "over_handle_pct": 72,
+        "under_handle_pct": 28,
+        "over_bets_pct": 60,
+        "under_bets_pct": 40
       },
       "moneyline": {
-        "away_line": "+150",
-        "home_line": "-180",
-        "away_handle_pct": 16,
-        "home_handle_pct": 84,
+        "away_line": "+130",
+        "home_line": "-155",
+        "away_handle_pct": 31,
+        "home_handle_pct": 69,
+        "away_bets_pct": 15,
+        "home_bets_pct": 85
+      }
+    },
+    {
+      "away_team": "Louisiana",
+      "home_team": "Delaware",
+      "spread": {
+        "away_line": "-3",
+        "home_line": "+3",
+        "away_handle_pct": 52,
+        "home_handle_pct": 48,
+        "away_bets_pct": 61,
+        "home_bets_pct": 39
+      },
+      "total": {
+        "line": "61.5",
+        "over_handle_pct": 91,
+        "under_handle_pct": 9,
+        "over_bets_pct": 38,
+        "under_bets_pct": 62
+      },
+      "moneyline": {
+        "away_line": "-155",
+        "home_line": "+130",
+        "away_handle_pct": 49,
+        "home_handle_pct": 51,
+        "away_bets_pct": 73,
+        "home_bets_pct": 27
+      }
+    },
+    {
+      "away_team": "Missouri ST",
+      "home_team": "Arkansas ST",
+      "spread": {
+        "away_line": "+1.5",
+        "home_line": "-1.5",
+        "away_handle_pct": 64,
+        "home_handle_pct": 36,
+        "away_bets_pct": 49,
+        "home_bets_pct": 51
+      },
+      "total": {
+        "line": "54.5",
+        "over_handle_pct": 34,
+        "under_handle_pct": 66,
+        "over_bets_pct": 42,
+        "under_bets_pct": 58
+      },
+      "moneyline": {
+        "away_line": "-102",
+        "home_line": "-118",
+        "away_handle_pct": 71,
+        "home_handle_pct": 29,
+        "away_bets_pct": 57,
+        "home_bets_pct": 43
+      }
+    },
+    {
+      "away_team": "Kennesaw ST",
+      "home_team": "Western Michigan",
+      "spread": {
+        "away_line": "+3.5",
+        "home_line": "-3.5",
+        "away_handle_pct": 39,
+        "home_handle_pct": 61,
+        "away_bets_pct": 43,
+        "home_bets_pct": 57
+      },
+      "total": {
+        "line": "49.5",
+        "over_handle_pct": 44,
+        "under_handle_pct": 56,
+        "over_bets_pct": 57,
+        "under_bets_pct": 43
+      },
+      "moneyline": {
+        "away_line": "+154",
+        "home_line": "-185",
+        "away_handle_pct": 63,
+        "home_handle_pct": 37,
+        "away_bets_pct": 31,
+        "home_bets_pct": 69
+      }
+    },
+    {
+      "away_team": "Memphis",
+      "home_team": "NC ST",
+      "spread": {
+        "away_line": "+4.5",
+        "home_line": "-4.5",
+        "away_handle_pct": 29,
+        "home_handle_pct": 71,
+        "away_bets_pct": 40,
+        "home_bets_pct": 60
+      },
+      "total": {
+        "line": "58.5",
+        "over_handle_pct": 72,
+        "under_handle_pct": 28,
+        "over_bets_pct": 56,
+        "under_bets_pct": 44
+      },
+      "moneyline": {
+        "away_line": "+170",
+        "home_line": "-205",
+        "away_handle_pct": 44,
+        "home_handle_pct": 56,
+        "away_bets_pct": 20,
+        "home_bets_pct": 80
+      }
+    },
+    {
+      "away_team": "Alabama",
+      "home_team": "Oklahoma",
+      "spread": {
+        "away_line": "-1.5",
+        "home_line": "+1.5",
+        "away_handle_pct": 49,
+        "home_handle_pct": 51,
+        "away_bets_pct": 44,
+        "home_bets_pct": 56
+      },
+      "total": {
+        "line": "40.5",
+        "over_handle_pct": 23,
+        "under_handle_pct": 77,
+        "over_bets_pct": 64,
+        "under_bets_pct": 36
+      },
+      "moneyline": {
+        "away_line": "-118",
+        "home_line": "-102",
+        "away_handle_pct": 82,
+        "home_handle_pct": 18,
+        "away_bets_pct": 60,
+        "home_bets_pct": 40
+      }
+    },
+    {
+      "away_team": "Miami FL",
+      "home_team": "Texas A&M",
+      "spread": {
+        "away_line": "+3",
+        "home_line": "-3",
+        "away_handle_pct": 81,
+        "home_handle_pct": 19,
+        "away_bets_pct": 33,
+        "home_bets_pct": 67
+      },
+      "total": {
+        "line": "51.5",
+        "over_handle_pct": 41,
+        "under_handle_pct": 59,
+        "over_bets_pct": 62,
+        "under_bets_pct": 38
+      },
+      "moneyline": {
+        "away_line": "+140",
+        "home_line": "-166",
+        "away_handle_pct": 58,
+        "home_handle_pct": 42,
+        "away_bets_pct": 27,
+        "home_bets_pct": 73
+      }
+    },
+    {
+      "away_team": "Tulane",
+      "home_team": "Ole Miss",
+      "spread": {
+        "away_line": "+17.5",
+        "home_line": "-17.5",
+        "away_handle_pct": 27,
+        "home_handle_pct": 73,
+        "away_bets_pct": 36,
+        "home_bets_pct": 64
+      },
+      "total": {
+        "line": "56.5",
+        "over_handle_pct": 70,
+        "under_handle_pct": 30,
+        "over_bets_pct": 63,
+        "under_bets_pct": 37
+      },
+      "moneyline": {
+        "away_line": "+575",
+        "home_line": "-850",
+        "away_handle_pct": 44,
+        "home_handle_pct": 56,
         "away_bets_pct": 14,
         "home_bets_pct": 86
       }
     },
     {
-      "away_team": "Ohio ST",
-      "home_team": "Indiana",
+      "away_team": "James Madison",
+      "home_team": "Oregon",
       "spread": {
-        "away_line": "-4",
-        "home_line": "+4",
-        "away_handle_pct": 88,
-        "home_handle_pct": 12,
-        "away_bets_pct": 79,
-        "home_bets_pct": 21
+        "away_line": "+21.5",
+        "home_line": "-21.5",
+        "away_handle_pct": 66,
+        "home_handle_pct": 34,
+        "away_bets_pct": 28,
+        "home_bets_pct": 72
       },
       "total": {
-        "line": "47.5",
-        "over_handle_pct": 77,
-        "under_handle_pct": 23,
-        "over_bets_pct": 69,
-        "under_bets_pct": 31
+        "line": "49.5",
+        "over_handle_pct": 69,
+        "under_handle_pct": 31,
+        "over_bets_pct": 77,
+        "under_bets_pct": 23
       },
       "moneyline": {
-        "away_line": "-198",
-        "home_line": "+164",
-        "away_handle_pct": 68,
-        "home_handle_pct": 32,
-        "away_bets_pct": 75,
-        "home_bets_pct": 25
+        "away_line": "+1100",
+        "home_line": "-2100",
+        "away_handle_pct": 13,
+        "home_handle_pct": 87,
+        "away_bets_pct": 15,
+        "home_bets_pct": 85
       }
     },
     {
-      "away_team": "South Dakota",
-      "home_team": "Mercer",
+      "away_team": "Washington ST",
+      "home_team": "Utah ST",
       "spread": {
-        "away_line": "+5.5",
-        "home_line": "-5.5",
-        "away_handle_pct": 86,
-        "home_handle_pct": 14,
-        "away_bets_pct": 65,
-        "home_bets_pct": 35
+        "away_line": "+3",
+        "home_line": "-3",
+        "away_handle_pct": 44,
+        "home_handle_pct": 56,
+        "away_bets_pct": 47,
+        "home_bets_pct": 53
       },
       "total": {
-        "line": "54.5",
-        "over_handle_pct": 6,
-        "under_handle_pct": 94,
-        "over_bets_pct": 35,
-        "under_bets_pct": 65
+        "line": "52.5",
+        "over_handle_pct": 27,
+        "under_handle_pct": 73,
+        "over_bets_pct": 51,
+        "under_bets_pct": 49
       },
       "moneyline": {
-        "away_line": "+185",
-        "home_line": "-225",
-        "away_handle_pct": 57,
-        "home_handle_pct": 43,
-        "away_bets_pct": 38,
-        "home_bets_pct": 62
+        "away_line": "+124",
+        "home_line": "-148",
+        "away_handle_pct": 6,
+        "home_handle_pct": 94,
+        "away_bets_pct": 20,
+        "home_bets_pct": 80
       }
     },
     {
-      "away_team": "Villanova",
-      "home_team": "Lehigh",
+      "away_team": "Toledo",
+      "home_team": "Louisville",
       "spread": {
-        "away_line": "+4.5",
-        "home_line": "-4.5",
-        "away_handle_pct": 39,
-        "home_handle_pct": 61,
-        "away_bets_pct": 50,
-        "home_bets_pct": 50
-      },
-      "total": {
-        "line": "47.5",
-        "over_handle_pct": 97,
-        "under_handle_pct": 3,
-        "over_bets_pct": 48,
-        "under_bets_pct": 52
-      },
-      "moneyline": {
-        "away_line": "+145",
-        "home_line": "-175",
-        "away_handle_pct": 71,
-        "home_handle_pct": 29,
+        "away_line": "+7.5",
+        "home_line": "-7.5",
+        "away_handle_pct": 35,
+        "home_handle_pct": 65,
         "away_bets_pct": 27,
         "home_bets_pct": 73
-      }
-    },
-    {
-      "away_team": "Illinois ST",
-      "home_team": "North Dakota ST",
-      "spread": {
-        "away_line": "+23.5",
-        "home_line": "-23.5",
-        "away_handle_pct": 12,
-        "home_handle_pct": 88,
-        "away_bets_pct": 18,
-        "home_bets_pct": 82
       },
       "total": {
-        "line": "51.5",
-        "over_handle_pct": 42,
-        "under_handle_pct": 58,
-        "over_bets_pct": 46,
-        "under_bets_pct": 54
+        "line": "44.5",
+        "over_handle_pct": 63,
+        "under_handle_pct": 37,
+        "over_bets_pct": 82,
+        "under_bets_pct": 18
       },
       "moneyline": {
-        "away_line": "+1400",
-        "home_line": "-3200",
-        "away_handle_pct": 10,
-        "home_handle_pct": 90,
+        "away_line": "+235",
+        "home_line": "-290",
+        "away_handle_pct": 24,
+        "home_handle_pct": 76,
         "away_bets_pct": 3,
         "home_bets_pct": 97
       }
     },
     {
-      "away_team": "North Dakota",
-      "home_team": "Tarleton ST",
+      "away_team": "Western Kentucky",
+      "home_team": "Southern Miss",
       "spread": {
-        "away_line": "+4.5",
-        "home_line": "-4.5",
-        "away_handle_pct": 76,
-        "home_handle_pct": 24,
-        "away_bets_pct": 66,
-        "home_bets_pct": 34
-      },
-      "total": {
-        "line": "58.5",
-        "over_handle_pct": 21,
-        "under_handle_pct": 79,
-        "over_bets_pct": 27,
-        "under_bets_pct": 73
-      },
-      "moneyline": {
-        "away_line": "+170",
-        "home_line": "-205",
-        "away_handle_pct": 66,
-        "home_handle_pct": 34,
-        "away_bets_pct": 26,
-        "home_bets_pct": 74
-      }
-    },
-    {
-      "away_team": "Abilene Christian",
-      "home_team": "Stephen F Austin",
-      "spread": {
-        "away_line": "+4.5",
-        "home_line": "-4.5",
-        "away_handle_pct": 11,
-        "home_handle_pct": 89,
-        "away_bets_pct": 24,
-        "home_bets_pct": 76
-      },
-      "total": {
-        "line": "49.5",
-        "over_handle_pct": 39,
-        "under_handle_pct": 61,
-        "over_bets_pct": 42,
-        "under_bets_pct": 58
-      },
-      "moneyline": {
-        "away_line": "+164",
-        "home_line": "-198",
-        "away_handle_pct": 68,
-        "home_handle_pct": 32,
-        "away_bets_pct": 18,
-        "home_bets_pct": 82
-      }
-    },
-    {
-      "away_team": "South Dakota ST",
-      "home_team": "Montana",
-      "spread": {
-        "away_line": "+3.5",
-        "home_line": "-3.5",
-        "away_handle_pct": 18,
-        "home_handle_pct": 82,
-        "away_bets_pct": 32,
-        "home_bets_pct": 68
-      },
-      "total": {
-        "line": "53.5",
-        "over_handle_pct": 14,
-        "under_handle_pct": 86,
-        "over_bets_pct": 38,
-        "under_bets_pct": 62
-      },
-      "moneyline": {
-        "away_line": "+142",
-        "home_line": "-170",
-        "away_handle_pct": 11,
-        "home_handle_pct": 89,
-        "away_bets_pct": 29,
-        "home_bets_pct": 71
-      }
-    },
-    {
-      "away_team": "Yale",
-      "home_team": "Montana ST",
-      "spread": {
-        "away_line": "+27.5",
-        "home_line": "-27.5",
-        "away_handle_pct": 31,
-        "home_handle_pct": 69,
-        "away_bets_pct": 43,
-        "home_bets_pct": 57
+        "away_line": "-4",
+        "home_line": "+4",
+        "away_handle_pct": 87,
+        "home_handle_pct": 13,
+        "away_bets_pct": 67,
+        "home_bets_pct": 33
       },
       "total": {
         "line": "56.5",
-        "over_handle_pct": 97,
-        "under_handle_pct": 3,
-        "over_bets_pct": 87,
-        "under_bets_pct": 13
+        "over_handle_pct": 100,
+        "under_handle_pct": 0,
+        "over_bets_pct": 62,
+        "under_bets_pct": 38
       },
       "moneyline": {
-        "away_line": "+1800",
-        "home_line": "-5000",
-        "away_handle_pct": 96,
-        "home_handle_pct": 4,
-        "away_bets_pct": 21,
-        "home_bets_pct": 79
+        "away_line": "-185",
+        "home_line": "+154",
+        "away_handle_pct": 71,
+        "home_handle_pct": 29,
+        "away_bets_pct": 87,
+        "home_bets_pct": 13
       }
     },
     {
-      "away_team": "Rhode Island",
-      "home_team": "UC Davis",
+      "away_team": "UNLV",
+      "home_team": "Ohio",
       "spread": {
-        "away_line": "+5.5",
-        "home_line": "-5.5",
-        "away_handle_pct": 9,
-        "home_handle_pct": 91,
-        "away_bets_pct": 31,
-        "home_bets_pct": 69
+        "away_line": "-4.5",
+        "home_line": "+4.5",
+        "away_handle_pct": 70,
+        "home_handle_pct": 30,
+        "away_bets_pct": 69,
+        "home_bets_pct": 31
       },
       "total": {
-        "line": "56.5",
-        "over_handle_pct": 94,
-        "under_handle_pct": 6,
+        "line": "62.5",
+        "over_handle_pct": 98,
+        "under_handle_pct": 2,
+        "over_bets_pct": 54,
+        "under_bets_pct": 46
+      },
+      "moneyline": {
+        "away_line": "-198",
+        "home_line": "+164",
+        "away_handle_pct": 59,
+        "home_handle_pct": 41,
+        "away_bets_pct": 87,
+        "home_bets_pct": 13
+      }
+    },
+    {
+      "away_team": "California",
+      "home_team": "Hawaii",
+      "spread": {
+        "away_line": "-1.5",
+        "home_line": "+1.5",
+        "away_handle_pct": 57,
+        "home_handle_pct": 43,
+        "away_bets_pct": 62,
+        "home_bets_pct": 38
+      },
+      "total": {
+        "line": "54.5",
+        "over_handle_pct": 88,
+        "under_handle_pct": 12,
+        "over_bets_pct": 65,
+        "under_bets_pct": 35
+      },
+      "moneyline": {
+        "away_line": "-118",
+        "home_line": "-102",
+        "away_handle_pct": 85,
+        "home_handle_pct": 15,
+        "away_bets_pct": 59,
+        "home_bets_pct": 41
+      }
+    },
+    {
+      "away_team": "Central Michigan",
+      "home_team": "Northwestern",
+      "spread": {
+        "away_line": "+10.5",
+        "home_line": "-10.5",
+        "away_handle_pct": 28,
+        "home_handle_pct": 72,
+        "away_bets_pct": 37,
+        "home_bets_pct": 63
+      },
+      "total": {
+        "line": "43.5",
+        "over_handle_pct": 4,
+        "under_handle_pct": 96,
+        "over_bets_pct": 70,
+        "under_bets_pct": 30
+      },
+      "moneyline": {
+        "away_line": "+330",
+        "home_line": "-425",
+        "away_handle_pct": 25,
+        "home_handle_pct": 75,
+        "away_bets_pct": 4,
+        "home_bets_pct": 96
+      }
+    },
+    {
+      "away_team": "New Mexico",
+      "home_team": "Minnesota",
+      "spread": {
+        "away_line": "+2.5",
+        "home_line": "-2.5",
+        "away_handle_pct": 67,
+        "home_handle_pct": 33,
+        "away_bets_pct": 30,
+        "home_bets_pct": 70
+      },
+      "total": {
+        "line": "46.5",
+        "over_handle_pct": 36,
+        "under_handle_pct": 64,
+        "over_bets_pct": 63,
+        "under_bets_pct": 37
+      },
+      "moneyline": {
+        "away_line": "+120",
+        "home_line": "-142",
+        "away_handle_pct": 38,
+        "home_handle_pct": 62,
+        "away_bets_pct": 38,
+        "home_bets_pct": 62
+      }
+    },
+    {
+      "away_team": "FIU",
+      "home_team": "UTSA",
+      "spread": {
+        "away_line": "+8.5",
+        "home_line": "-8.5",
+        "away_handle_pct": 6,
+        "home_handle_pct": 94,
+        "away_bets_pct": 67,
+        "home_bets_pct": 33
+      },
+      "total": {
+        "line": "59.5",
+        "over_handle_pct": 90,
+        "under_handle_pct": 10,
         "over_bets_pct": 52,
         "under_bets_pct": 48
       },
       "moneyline": {
-        "away_line": "+170",
-        "home_line": "-205",
-        "away_handle_pct": 30,
-        "home_handle_pct": 70,
-        "away_bets_pct": 27,
-        "home_bets_pct": 73
+        "away_line": "+260",
+        "home_line": "-325",
+        "away_handle_pct": 55,
+        "home_handle_pct": 45,
+        "away_bets_pct": 4,
+        "home_bets_pct": 96
       }
     },
     {
-      "away_team": "Army",
-      "home_team": "Navy",
+      "away_team": "Pittsburgh",
+      "home_team": "East Carolina",
+      "spread": {
+        "away_line": "-7",
+        "home_line": "+7",
+        "away_handle_pct": 87,
+        "home_handle_pct": 13,
+        "away_bets_pct": 85,
+        "home_bets_pct": 15
+      },
+      "total": {
+        "line": "57.5",
+        "over_handle_pct": 35,
+        "under_handle_pct": 65,
+        "over_bets_pct": 46,
+        "under_bets_pct": 54
+      },
+      "moneyline": {
+        "away_line": "-250",
+        "home_line": "+205",
+        "away_handle_pct": 47,
+        "home_handle_pct": 53,
+        "away_bets_pct": 91,
+        "home_bets_pct": 9
+      }
+    },
+    {
+      "away_team": "Penn ST",
+      "home_team": "Clemson",
+      "spread": {
+        "away_line": "+3.5",
+        "home_line": "-3.5",
+        "away_handle_pct": 7,
+        "home_handle_pct": 93,
+        "away_bets_pct": 46,
+        "home_bets_pct": 54
+      },
+      "total": {
+        "line": "48.5",
+        "over_handle_pct": 63,
+        "under_handle_pct": 37,
+        "over_bets_pct": 57,
+        "under_bets_pct": 43
+      },
+      "moneyline": {
+        "away_line": "+136",
+        "home_line": "-162",
+        "away_handle_pct": 21,
+        "home_handle_pct": 79,
+        "away_bets_pct": 25,
+        "home_bets_pct": 75
+      }
+    },
+    {
+      "away_team": "UConn",
+      "home_team": "Army",
+      "spread": {
+        "away_line": "+8.5",
+        "home_line": "-8.5",
+        "away_handle_pct": 9,
+        "home_handle_pct": 91,
+        "away_bets_pct": 47,
+        "home_bets_pct": 53
+      },
+      "total": {
+        "line": "46.5",
+        "over_handle_pct": 54,
+        "under_handle_pct": 46,
+        "over_bets_pct": 36,
+        "under_bets_pct": 64
+      },
+      "moneyline": {
+        "away_line": "+250",
+        "home_line": "-310",
+        "away_handle_pct": 22,
+        "home_handle_pct": 78,
+        "away_bets_pct": 33,
+        "home_bets_pct": 67
+      }
+    },
+    {
+      "away_team": "Georgia Tech",
+      "home_team": "BYU",
       "spread": {
         "away_line": "+4.5",
         "home_line": "-4.5",
-        "away_handle_pct": 13,
-        "home_handle_pct": 87,
-        "away_bets_pct": 23,
-        "home_bets_pct": 77
+        "away_handle_pct": 8,
+        "home_handle_pct": 92,
+        "away_bets_pct": 29,
+        "home_bets_pct": 71
       },
       "total": {
-        "line": "38.5",
-        "over_handle_pct": 10,
-        "under_handle_pct": 90,
-        "over_bets_pct": 74,
-        "under_bets_pct": 26
+        "line": "56.5",
+        "over_handle_pct": 31,
+        "under_handle_pct": 69,
+        "over_bets_pct": 49,
+        "under_bets_pct": 51
       },
       "moneyline": {
-        "away_line": "+164",
-        "home_line": "-198",
-        "away_handle_pct": 22,
-        "home_handle_pct": 78,
-        "away_bets_pct": 17,
-        "home_bets_pct": 83
+        "away_line": "+160",
+        "home_line": "-192",
+        "away_handle_pct": 35,
+        "home_handle_pct": 65,
+        "away_bets_pct": 20,
+        "home_bets_pct": 80
+      }
+    },
+    {
+      "away_team": "Miami OH",
+      "home_team": "Fresno ST",
+      "spread": {
+        "away_line": "+4.5",
+        "home_line": "-4.5",
+        "away_handle_pct": 14,
+        "home_handle_pct": 86,
+        "away_bets_pct": 31,
+        "home_bets_pct": 69
+      },
+      "total": {
+        "line": "42.5",
+        "over_handle_pct": 14,
+        "under_handle_pct": 86,
+        "over_bets_pct": 77,
+        "under_bets_pct": 23
+      },
+      "moneyline": {
+        "away_line": "+160",
+        "home_line": "-192",
+        "away_handle_pct": 61,
+        "home_handle_pct": 39,
+        "away_bets_pct": 12,
+        "home_bets_pct": 88
+      }
+    },
+    {
+      "away_team": "North Texas",
+      "home_team": "San Diego ST",
+      "spread": {
+        "away_line": "-3",
+        "home_line": "+3",
+        "away_handle_pct": 24,
+        "home_handle_pct": 76,
+        "away_bets_pct": 68,
+        "home_bets_pct": 32
+      },
+      "total": {
+        "line": "55.5",
+        "over_handle_pct": 76,
+        "under_handle_pct": 24,
+        "over_bets_pct": 68,
+        "under_bets_pct": 32
+      },
+      "moneyline": {
+        "away_line": "-155",
+        "home_line": "+130",
+        "away_handle_pct": 21,
+        "home_handle_pct": 79,
+        "away_bets_pct": 85,
+        "home_bets_pct": 15
+      }
+    },
+    {
+      "away_team": "Virginia",
+      "home_team": "Missouri",
+      "spread": {
+        "away_line": "+7",
+        "home_line": "-7",
+        "away_handle_pct": 17,
+        "home_handle_pct": 83,
+        "away_bets_pct": 28,
+        "home_bets_pct": 72
+      },
+      "total": {
+        "line": "48.5",
+        "over_handle_pct": 39,
+        "under_handle_pct": 61,
+        "over_bets_pct": 59,
+        "under_bets_pct": 41
+      },
+      "moneyline": {
+        "away_line": "+215",
+        "home_line": "-265",
+        "away_handle_pct": 41,
+        "home_handle_pct": 59,
+        "away_bets_pct": 11,
+        "home_bets_pct": 89
+      }
+    },
+    {
+      "away_team": "LSU",
+      "home_team": "Houston",
+      "spread": {
+        "away_line": "+3",
+        "home_line": "-3",
+        "away_handle_pct": 28,
+        "home_handle_pct": 72,
+        "away_bets_pct": 41,
+        "home_bets_pct": 59
+      },
+      "total": {
+        "line": "41.5",
+        "over_handle_pct": 19,
+        "under_handle_pct": 81,
+        "over_bets_pct": 81,
+        "under_bets_pct": 19
+      },
+      "moneyline": {
+        "away_line": "+124",
+        "home_line": "-148",
+        "away_handle_pct": 77,
+        "home_handle_pct": 23,
+        "away_bets_pct": 65,
+        "home_bets_pct": 35
+      }
+    },
+    {
+      "away_team": "Georgia Southern",
+      "home_team": "Appalachian ST",
+      "spread": {
+        "away_line": "-4.5",
+        "home_line": "+4.5",
+        "away_handle_pct": 76,
+        "home_handle_pct": 24,
+        "away_bets_pct": 50,
+        "home_bets_pct": 50
+      },
+      "total": {
+        "line": "59.5",
+        "over_handle_pct": 43,
+        "under_handle_pct": 57,
+        "over_bets_pct": 41,
+        "under_bets_pct": 59
+      },
+      "moneyline": {
+        "away_line": "-198",
+        "home_line": "+164",
+        "away_handle_pct": 65,
+        "home_handle_pct": 35,
+        "away_bets_pct": 66,
+        "home_bets_pct": 34
+      }
+    },
+    {
+      "away_team": "Coastal Carolina",
+      "home_team": "Louisiana Tech",
+      "spread": {
+        "away_line": "+8.5",
+        "home_line": "-8.5",
+        "away_handle_pct": 5,
+        "home_handle_pct": 95,
+        "away_bets_pct": 42,
+        "home_bets_pct": 58
+      },
+      "total": {
+        "line": "50.5",
+        "over_handle_pct": 6,
+        "under_handle_pct": 94,
+        "over_bets_pct": 64,
+        "under_bets_pct": 36
+      },
+      "moneyline": {
+        "away_line": "+260",
+        "home_line": "-325",
+        "away_handle_pct": 65,
+        "home_handle_pct": 35,
+        "away_bets_pct": 6,
+        "home_bets_pct": 94
+      }
+    },
+    {
+      "away_team": "Tennessee",
+      "home_team": "Illinois",
+      "spread": {
+        "away_line": "-2.5",
+        "home_line": "+2.5",
+        "away_handle_pct": 68,
+        "home_handle_pct": 32,
+        "away_bets_pct": 83,
+        "home_bets_pct": 17
+      },
+      "total": {
+        "line": "60.5",
+        "over_handle_pct": 83,
+        "under_handle_pct": 17,
+        "over_bets_pct": 43,
+        "under_bets_pct": 57
+      },
+      "moneyline": {
+        "away_line": "-142",
+        "home_line": "+120",
+        "away_handle_pct": 55,
+        "home_handle_pct": 45,
+        "away_bets_pct": 91,
+        "home_bets_pct": 9
+      }
+    },
+    {
+      "away_team": "USC",
+      "home_team": "TCU",
+      "spread": {
+        "away_line": "-4.5",
+        "home_line": "+4.5",
+        "away_handle_pct": 81,
+        "home_handle_pct": 19,
+        "away_bets_pct": 77,
+        "home_bets_pct": 23
+      },
+      "total": {
+        "line": "57.5",
+        "over_handle_pct": 87,
+        "under_handle_pct": 13,
+        "over_bets_pct": 65,
+        "under_bets_pct": 35
+      },
+      "moneyline": {
+        "away_line": "-192",
+        "home_line": "+160",
+        "away_handle_pct": 62,
+        "home_handle_pct": 38,
+        "away_bets_pct": 92,
+        "home_bets_pct": 8
+      }
+    },
+    {
+      "away_team": "Iowa",
+      "home_team": "Vanderbilt",
+      "spread": {
+        "away_line": "+5.5",
+        "home_line": "-5.5",
+        "away_handle_pct": 27,
+        "home_handle_pct": 73,
+        "away_bets_pct": 28,
+        "home_bets_pct": 72
+      },
+      "total": {
+        "line": "47.5",
+        "over_handle_pct": 9,
+        "under_handle_pct": 91,
+        "over_bets_pct": 40,
+        "under_bets_pct": 60
+      },
+      "moneyline": {
+        "away_line": "+180",
+        "home_line": "-218",
+        "away_handle_pct": 48,
+        "home_handle_pct": 52,
+        "away_bets_pct": 12,
+        "home_bets_pct": 88
+      }
+    },
+    {
+      "away_team": "Arizona ST",
+      "home_team": "Duke",
+      "spread": {
+        "away_line": "+2.5",
+        "home_line": "-2.5",
+        "away_handle_pct": 12,
+        "home_handle_pct": 88,
+        "away_bets_pct": 36,
+        "home_bets_pct": 64
+      },
+      "total": {
+        "line": "49.5",
+        "over_handle_pct": 24,
+        "under_handle_pct": 76,
+        "over_bets_pct": 66,
+        "under_bets_pct": 34
+      },
+      "moneyline": {
+        "away_line": "+114",
+        "home_line": "-135",
+        "away_handle_pct": 10,
+        "home_handle_pct": 90,
+        "away_bets_pct": 30,
+        "home_bets_pct": 70
+      }
+    },
+    {
+      "away_team": "Michigan",
+      "home_team": "Texas",
+      "spread": {
+        "away_line": "+7.5",
+        "home_line": "-7.5",
+        "away_handle_pct": 2,
+        "home_handle_pct": 98,
+        "away_bets_pct": 8,
+        "home_bets_pct": 92
+      },
+      "total": {
+        "line": "46.5",
+        "over_handle_pct": 22,
+        "under_handle_pct": 78,
+        "over_bets_pct": 59,
+        "under_bets_pct": 41
+      },
+      "moneyline": {
+        "away_line": "+230",
+        "home_line": "-285",
+        "away_handle_pct": 14,
+        "home_handle_pct": 86,
+        "away_bets_pct": 8,
+        "home_bets_pct": 92
+      }
+    },
+    {
+      "away_team": "Nebraska",
+      "home_team": "Utah",
+      "spread": {
+        "away_line": "+16.5",
+        "home_line": "-16.5",
+        "away_handle_pct": 28,
+        "home_handle_pct": 72,
+        "away_bets_pct": 39,
+        "home_bets_pct": 61
+      },
+      "total": {
+        "line": "50.5",
+        "over_handle_pct": 91,
+        "under_handle_pct": 9,
+        "over_bets_pct": 54,
+        "under_bets_pct": 46
+      },
+      "moneyline": {
+        "away_line": "+525",
+        "home_line": "-750",
+        "away_handle_pct": 42,
+        "home_handle_pct": 58,
+        "away_bets_pct": 7,
+        "home_bets_pct": 93
+      }
+    },
+    {
+      "away_team": "Rice",
+      "home_team": "Texas ST",
+      "spread": {
+        "away_line": "+10.5",
+        "home_line": "-10.5",
+        "away_handle_pct": 34,
+        "home_handle_pct": 66,
+        "away_bets_pct": 39,
+        "home_bets_pct": 61
+      },
+      "total": {
+        "line": "59.5",
+        "over_handle_pct": 56,
+        "under_handle_pct": 44,
+        "over_bets_pct": 36,
+        "under_bets_pct": 64
+      },
+      "moneyline": {
+        "away_line": "+320",
+        "home_line": "-410",
+        "away_handle_pct": 25,
+        "home_handle_pct": 75,
+        "away_bets_pct": 4,
+        "home_bets_pct": 96
+      }
+    },
+    {
+      "away_team": "Navy",
+      "home_team": "Cincinnati",
+      "spread": {
+        "away_line": "-7",
+        "home_line": "+7",
+        "away_handle_pct": 97,
+        "home_handle_pct": 3,
+        "away_bets_pct": 59,
+        "home_bets_pct": 41
+      },
+      "total": {
+        "line": "53.5",
+        "over_handle_pct": 16,
+        "under_handle_pct": 84,
+        "over_bets_pct": 29,
+        "under_bets_pct": 71
+      },
+      "moneyline": {
+        "away_line": "-258",
+        "home_line": "+210",
+        "away_handle_pct": 95,
+        "home_handle_pct": 5,
+        "away_bets_pct": 57,
+        "home_bets_pct": 43
+      }
+    },
+    {
+      "away_team": "Wake Forest",
+      "home_team": "Mississippi ST",
+      "spread": {
+        "away_line": "+2.5",
+        "home_line": "-2.5",
+        "away_handle_pct": 65,
+        "home_handle_pct": 35,
+        "away_bets_pct": 33,
+        "home_bets_pct": 67
+      },
+      "total": {
+        "line": "56.5",
+        "over_handle_pct": 46,
+        "under_handle_pct": 54,
+        "over_bets_pct": 40,
+        "under_bets_pct": 60
+      },
+      "moneyline": {
+        "away_line": "+120",
+        "home_line": "-142",
+        "away_handle_pct": 60,
+        "home_handle_pct": 40,
+        "away_bets_pct": 32,
+        "home_bets_pct": 68
+      }
+    },
+    {
+      "away_team": "Arizona",
+      "home_team": "SMU",
+      "spread": {
+        "away_line": "-3",
+        "home_line": "+3",
+        "away_handle_pct": 81,
+        "home_handle_pct": 19,
+        "away_bets_pct": 56,
+        "home_bets_pct": 44
+      },
+      "total": {
+        "line": "51.5",
+        "over_handle_pct": 36,
+        "under_handle_pct": 64,
+        "over_bets_pct": 79,
+        "under_bets_pct": 21
+      },
+      "moneyline": {
+        "away_line": "-155",
+        "home_line": "+130",
+        "away_handle_pct": 92,
+        "home_handle_pct": 8,
+        "away_bets_pct": 67,
+        "home_bets_pct": 33
       }
     }
   ]
